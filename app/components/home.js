@@ -19,21 +19,33 @@ export default class Home extends Component {
     this.state = {
       isLoading: true,
       name: '',
+      bg: require('../assets/img/home/bg.png'),
     };
 
     fetch(`http://api.hotvenueapp.com/device?identifierForVendor=${identifierForVendor}`)
       .then((res) => res.json())
       .then((res) => {
+        const device = res[0];
+        const location = device.location;
+        const bg = location.urlFrame['2x'];
+
         this.setState({
-          isLoading: false,
-          name: res[0].name,
+          name: device.name,
+          bg: { uri: bg },
         });
+
+        Image.prefetch(bg)
+          .then(() => {
+            this.setState({
+              isLoading: false,
+            });
+          });
       });
   }
 
   render() {
     return (
-      <Image source={require('../assets/img/home/bg.png')} style={styles.container}>
+      <Image source={this.state.bg} style={styles.container}>
         <Spinner visible={this.state.isLoading}/>
       </Image>
     );
