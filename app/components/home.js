@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Image, Text } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import Spinner from 'react-native-loading-spinner-overlay';
 
@@ -47,6 +48,7 @@ export default class Home extends Component {
     return (
       <Image source={this.state.bg} style={styles.container}>
         <Spinner visible={this.state.isLoading}/>
+        <Text>{DeviceInfo.getUniqueID()}</Text>
       </Image>
     );
   }
