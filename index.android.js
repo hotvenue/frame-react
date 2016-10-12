@@ -1,6 +1,6 @@
 'use strict';
 
 import { AppRegistry } from 'react-native';
-import setup from './app/setup';
+import Root from './app/setup';
 
-AppRegistry.registerComponent('HotVenueFrame', setup);
+AppRegistry.registerComponent('HotVenueFrame', () => Root);
