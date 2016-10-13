@@ -2,9 +2,9 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Navigator } from 'react-native';
-import { connect } from 'react-redux';
 
 import Home from './home';
+import Thanks from './thanks';
 
 export default class Nav extends Component {
   render() {
@@ -22,6 +22,11 @@ export default class Nav extends Component {
     switch (route.id) {
       case 'home':
         return (<Home navigator={navigator} />);
+
+      case 'thanks':
+        setTimeout(() => navigator.pop(), 3000);
+
+        return (<Thanks navigator={navigator} />);
     }
   }
 }
