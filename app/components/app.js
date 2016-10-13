@@ -6,18 +6,18 @@ import { connect } from 'react-redux';
 
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import { initialize } from '../actions';
+import actions from '../actions';
 import Home from './home';
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(initialize());
+    this.props.dispatch(actions.initialize());
   }
 
   render() {
     if (!this.props.isInitialized) {
       return (
-        <Spinner/>
+        <Spinner visible={!this.props.isInitialized} />
       );
     }
 
@@ -27,8 +27,9 @@ class App extends Component {
   }
 }
 
-module.exports = connect((store) => {
+function initialize(store) {
   return {
-    isInitialized: store.isInitialized,
+    isInitialized: store.initialize.isInitialized,
   };
-})(App);
+}
+export default connect(initialize)(App);

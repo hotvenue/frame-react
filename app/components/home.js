@@ -2,14 +2,14 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Image, Text } from 'react-native';
+import { connect } from 'react-redux';
+
 import DeviceInfo from 'react-native-device-info';
 
-export default class Home extends Component {
+class Home extends Component {
   render() {
     return (
-      <Image source={this.state.frame} style={styles.container}>
-        <Text>{DeviceInfo.getUniqueID()}</Text>
-      </Image>
+      <Image source={this.props.frame} style={styles.container} />
     );
   }
 }
@@ -23,10 +23,15 @@ const styles = StyleSheet.create({
     width: null,
     height: null,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
 });
+
+function initialize(store) {
+  return {
+    frame: store.initialize.frame,
+    thanks: store.initialize.thanks,
+    watermark: store.initialize.watermark,
+  };
+}
+
+export default connect(initialize)(Home);
 
