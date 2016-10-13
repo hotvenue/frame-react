@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import actions from '../actions';
-import Home from './home';
+import Nav from './navigator';
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ class App extends Component {
     }
 
     return (
-      <Home />
+      <Nav />
     );
   }
 }
