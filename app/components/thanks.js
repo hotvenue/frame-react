@@ -5,6 +5,10 @@ import { StyleSheet, Image } from 'react-native';
 import { connect } from 'react-redux';
 
 class Thanks extends Component {
+  componentDidMount() {
+    setTimeout(() => this.props.navigator.push({ id: 'home' }), 3000);
+  }
+
   render() {
     return (
       <Image source={this.props.thanks} style={styles.container} />
@@ -15,11 +19,7 @@ class Thanks extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    width: null,
-    height: null,
+    resizeMode: 'cover',
   },
 });
 

@@ -4,13 +4,13 @@ import React, { Component } from 'react';
 import { StyleSheet, Navigator } from 'react-native';
 
 import Home from './home';
+import Cam from './camera';
 import Thanks from './thanks';
 
 export default class Nav extends Component {
   render() {
     return (
       <Navigator
-        ref="navigator"
         style={styles.container}
         initialRoute={{ id: 'home' }}
         renderScene={ this.navigatorRenderScene }
@@ -23,9 +23,10 @@ export default class Nav extends Component {
       case 'home':
         return (<Home navigator={navigator} />);
 
-      case 'thanks':
-        setTimeout(() => navigator.pop(), 3000);
+      case 'camera':
+        return (<Cam navigator={navigator} />);
 
+      case 'thanks':
         return (<Thanks navigator={navigator} />);
     }
   }

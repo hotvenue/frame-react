@@ -14,9 +14,7 @@ class Home extends Component {
   }
 
   _onPressButton() {
-    console.log('button pressed');
-
-    this.props.navigator.push({ id: 'thanks' });
+    this.props.navigator.push({ id: 'camera' });
   }
 }
 
