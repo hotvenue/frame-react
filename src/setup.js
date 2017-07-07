@@ -6,13 +6,13 @@ import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
 
 import reducers from './reducers';
-import App from './components/App';
+import Loading from './components/Loading';
 
 const store = createStore(reducers, applyMiddleware(promiseMiddleware()));
 
 const Root = () => (
   <Provider store={store}>
-    <App />
+    <Loading />
   </Provider>
 );
 

@@ -1,7 +1,12 @@
 // @flow
 
 import type { InitData, InitAction } from '../actions/init';
-import { FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE } from '../constants';
+import {
+  INIT_FETCHING,
+  INIT_FETCHING_PENDING,
+  INIT_FETCHING_FULFILLED,
+  INIT_FETCHING_REJECTED,
+} from '../constants';
 
 export type InitState = {
   initData: InitData;
@@ -20,21 +25,22 @@ export default function initReducer(
   action: InitAction,
 ): InitState {
   switch (action.type) {
-    case FETCHING_DATA:
+    case INIT_FETCHING:
+    case INIT_FETCHING_PENDING:
       return {
         ...state,
         initData: {},
         initDataFetching: true,
       };
 
-    case FETCHING_DATA_SUCCESS:
+    case INIT_FETCHING_FULFILLED:
       return {
         ...state,
         initDataFetching: false,
-        initData: action.data,
+        initData: action.payload,
       };
 
-    case FETCHING_DATA_FAILURE:
+    case INIT_FETCHING_REJECTED:
       return {
         ...state,
         initDataFetching: false,
